@@ -44,8 +44,8 @@ GameObject:
   - component: {fileID: 2829913687436141283}
   - component: {fileID: 5509783855473408041}
   - component: {fileID: 9159433966935596816}
-  - component: {fileID: 9196833762176869817}
   - component: {fileID: 8475626065933899772}
+  - component: {fileID: 9196833762176869817}
   - component: {fileID: 4568643293558082662}
   m_Layer: 10
   m_Name: Player 1
@@ -217,6 +217,32 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8475626065933899772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4193306035432218998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02bbdb1256d0a17488bfd8ce40be9eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  audioManager: {fileID: 0}
+  animator: {fileID: 9159433966935596816}
+  attackPoint: {fileID: 3325156091438569799}
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  Player2: {fileID: 0}
+  healthBar: {fileID: 0}
+  maxHealth: 100
+  currentHealth: 0
+  attackRange: 0.9
+  attackRate: 1.8
+  attackDamage: 8
 --- !u!114 &9196833762176869817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,31 +262,6 @@ MonoBehaviour:
   jumpableGround:
     serializedVersion: 2
     m_Bits: 320
---- !u!114 &8475626065933899772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4193306035432218998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02bbdb1256d0a17488bfd8ce40be9eda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  animator: {fileID: 9159433966935596816}
-  attackPoint: {fileID: 3325156091438569799}
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 128
-  Player2: {fileID: 0}
-  healthBar: {fileID: 0}
-  maxHealth: 100
-  currentHealth: 0
-  attackRange: 1.41
-  attackRate: 2
-  attackDamage: 8
 --- !u!114 &4568643293558082662
 MonoBehaviour:
   m_ObjectHideFlags: 0

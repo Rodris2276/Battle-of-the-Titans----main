@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using System.Collections;
 using UnityEngine;
+using System.Text;
+using System;
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
-
+    public AudioSource musicSource;
     public GameObject pauseMenuUI;
 
-    // Update is called once per frame
+    void Start()
+    {
+        musicSource = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>();
+    }
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
@@ -26,6 +32,11 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    public void StopSFX()
+    {
+        musicSource.Stop();
+    }
+
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
@@ -33,7 +44,7 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
     }
 
-    void Pause()
+    public void Pause()
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;

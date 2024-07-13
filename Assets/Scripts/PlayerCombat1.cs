@@ -10,12 +10,14 @@ using System;
 public class PlayerCombat1 : MonoBehaviour
 {
     public GameManagerScript gameManager;
+    public AudioManager audioManager;
     public Animator animator;
+    public Text playername;
     public Transform attackPoint;
     public LayerMask enemyLayers;
     [SerializeField] GameObject Player1;
     
-    private bool isDead;
+    private bool isDead1;
 
     public HealthBar healthBar;
     public int maxHealth = 100;
@@ -30,6 +32,7 @@ public class PlayerCombat1 : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     void Update()
@@ -49,10 +52,12 @@ public class PlayerCombat1 : MonoBehaviour
     {
         currentHealth -= damage;
         animator.SetTrigger("Hurt");
-        if(currentHealth <= 0 && !isDead)
+        if(currentHealth <= 0 && !isDead1)
         {
-            isDead=true;
+            isDead1=true;
             gameManager.WinGame();
+            GameManagerScript.playernamestr = playername.text;
+            audioManager.PlaySFX(audioManager.death);
             Die();
         }
         healthBar.SetHealth(currentHealth);

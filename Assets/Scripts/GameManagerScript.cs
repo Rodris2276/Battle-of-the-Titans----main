@@ -3,15 +3,23 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
+using System;
 
 public class GameManagerScript : MonoBehaviour
 {
     public GameObject WinScreenUI;
-    public Text PlayerName;
+    public AudioManager audioManager;
+
+    public static string playernamestr;
+    public static string playernamestr1;
+    public Text playername;
+    public Text playername1;
 
     void Start()
-    {
-        //PlayerName.text = 
+    {   
+        playername.text = playernamestr;
+        playername1.text = playernamestr1;
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     void Update()

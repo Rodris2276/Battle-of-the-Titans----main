@@ -8,7 +8,6 @@ using UnityEngine;
 
 public class PlayerMovement1 : MonoBehaviour
 {
-
     private SpriteRenderer sprite;
     private BoxCollider2D coll;
     private Rigidbody2D rb;
@@ -16,6 +15,7 @@ public class PlayerMovement1 : MonoBehaviour
 
     float speed = 0;
     private float dirX = 0f;
+    public AudioManager audioManager;
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 8f;
     [SerializeField] private LayerMask jumpableGround;
@@ -30,6 +30,7 @@ public class PlayerMovement1 : MonoBehaviour
         coll = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -51,7 +52,6 @@ public class PlayerMovement1 : MonoBehaviour
     private void HandleMovement()
     {
         float translation = speed * Time.deltaTime;
-
         transform.Translate(new Vector2(Input.GetAxis("Horizontal1")* translation , Input.GetAxis("Vertical1") * translation));
     }
 

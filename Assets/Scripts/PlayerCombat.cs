@@ -10,6 +10,9 @@ using System;
 public class PlayerCombat : MonoBehaviour
 {
     public GameManagerScript gameManager;
+    public AudioSource musicSource;
+    public AudioManager audioManager;
+    public Text playername1;
     public Animator animator;
     public Transform attackPoint;
     public LayerMask enemyLayers;
@@ -30,13 +33,15 @@ public class PlayerCombat : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        musicSource = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        musicSource.Play();
     }
 
     void Update()
     {
         if(Time.time >= nextAttackTime) 
         { 
-
             if(Input.GetKeyDown(KeyCode.F))
             {
                 Attack();
@@ -52,7 +57,9 @@ public class PlayerCombat : MonoBehaviour
         if(currentHealth <= 0 && !isDead)
         {
             isDead=true;
-            gameManager.WinGame();
+            gameManager.WinGame(); 
+            GameManagerScript.playernamestr1 = playername1.text;
+            audioManager.PlaySFX(audioManager.death);
             Die();  
         }
         healthBar.SetHealth(currentHealth);
